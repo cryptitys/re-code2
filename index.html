@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bis Apostilas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="img/bis.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="css/apostilas.css" rel="stylesheet">
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+
+    <header>
+        <div class="header-left">
+            <button id="menu-toggle-btn" aria-label="Abrir menu">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="header-title">Bis Apostilas</h1>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle-btn" aria-label="Alternar tema claro/escuro">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M12 2.25c-5.38 0-9.75 4.37-9.75 9.75s4.37 9.75 9.75 9.75 9.75-4.37 9.75-9.75S17.38 2.25 12 2.25zm0 17.25V4.5c4.14 0 7.5 3.36 7.5 7.5s-3.36 7.5-7.5 7.5z"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">Menu</h2>
+            <button id="sidebar-close-btn" aria-label="Fechar menu">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+        </div>
+        <nav>
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#" class="active" aria-current="page">
+                        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        Apostilas
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="donation-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        Doação
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="credits-link">
+                        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        Créditos
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <div class="main-card">
+            <div class="content-header">
+                <h1>Apostilas Disponíveis</h1>
+            </div>
+
+            <div class="toggle-switch-container">
+                <button class="toggle-switch-btn active" data-level="medio" aria-pressed="true">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 14H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    Ensino Médio
+                </button>
+                <button class="toggle-switch-btn" data-level="fundamental" aria-pressed="false">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 14H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    Ensino Fundamental
+                </button>
+            </div>
+
+            <div class="apostilas-grid">
+                </div>
+        </div>
+    </main>
+    
+    <div id="loading-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="loading-modal-title">
+        <div class="modal-container">
+            <h2 id="loading-modal-title">Abrindo apostila...</h2>
+            <div class="spinner"></div>
+            <p style="margin-top: 1rem;">Você será redirecionado em breve.</p>
+        </div>
+    </div>
+    
+    <div id="donation-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="donation-modal-title">
+        <div class="modal-container">
+            <button class="modal-close-btn" aria-label="Fechar modal">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+            <h2 id="donation-modal-title">Apoie o Projeto!</h2>
+            <p>Sua doação ajuda a manter o Bis Apostilas online. Agradecemos o seu apoio!</p>
+            <div class="modal-actions">
+                <button class="modal-action-btn" type="button" onclick="window.open('https://pixgg.com/samudev','_blank','noopener,noreferrer')">Doar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="credits-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="credits-modal-title">
+        <div class="modal-container">
+            <button class="modal-close-btn" aria-label="Fechar modal">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+            <h2 id="credits-modal-title">Créditos</h2>
+            <p>Desenvolvido com carinho para a comunidade estudantil.</p>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Scripts>: Bis / Designer: Bis</p>
+            <div class="modal-actions">
+                <button class="modal-action-btn secondary">Fechar</button>
+            </div>
+        </div>
+    </div>
+    <script src="src/apostilas.js"></script>
+</body>
+</html>
